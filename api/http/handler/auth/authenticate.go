@@ -82,6 +82,7 @@ func (handler *Handler) authenticateLDAP(w http.ResponseWriter, user *portainer.
 }
 
 func (handler *Handler) authenticateInternal(w http.ResponseWriter, user *portainer.User, password string) *httperror.HandlerError {
+	log.Printf("User: %s\n", user)
 	err := handler.CryptoService.CompareHashAndData(user.Password, password)
 	if err != nil {
 		return &httperror.HandlerError{http.StatusUnprocessableEntity, "Invalid credentials", httperrors.ErrUnauthorized}
