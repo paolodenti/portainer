@@ -56,7 +56,7 @@ func (m *Migrator) updateUsersAndRolesToDBVersion22() error {
 		return err
 	}
 	helpDeskRole.Priority = 2
-	helpDeskRole.Authorizations = authorization.DefaultEndpointAuthorizationsForHelpDeskRole(settings.AllowVolumeBrowserForRegularUsers)
+	helpDeskRole.Authorizations = authorization.DefaultEndpointAuthorizationsForReadOnlyUserRole(settings.AllowVolumeBrowserForRegularUsers)
 
 	err = m.roleService.UpdateRole(helpDeskRole.ID, helpDeskRole)
 
@@ -65,7 +65,7 @@ func (m *Migrator) updateUsersAndRolesToDBVersion22() error {
 		return err
 	}
 	standardUserRole.Priority = 3
-	standardUserRole.Authorizations = authorization.DefaultEndpointAuthorizationsForStandardUserRole(settings.AllowVolumeBrowserForRegularUsers)
+	standardUserRole.Authorizations = authorization.DefaultEndpointAuthorizationsForReadOnlyUserRole(settings.AllowVolumeBrowserForRegularUsers)
 
 	err = m.roleService.UpdateRole(standardUserRole.ID, standardUserRole)
 

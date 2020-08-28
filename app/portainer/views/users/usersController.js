@@ -43,7 +43,7 @@ angular.module('portainer.app').controller('UsersController', [
       $scope.state.userCreationError = '';
       var username = $scope.formValues.Username;
       var password = $scope.formValues.Password;
-      var role = $scope.formValues.Administrator ? 1 : 4;
+      var role = $scope.formValues.Administrator ? 1 : 2;
       var teamIds = [];
       angular.forEach($scope.formValues.Teams, function (team) {
         teamIds.push(team.Id);
